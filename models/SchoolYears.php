@@ -12,6 +12,7 @@ use Yii;
  * @property string $isCurrent
  *
  * @property Tad[] $tads
+ * @property Users2programs[] $users2programs
  */
 class SchoolYears extends \yii\db\ActiveRecord
 {
@@ -55,5 +56,15 @@ class SchoolYears extends \yii\db\ActiveRecord
     public function getTads()
     {
         return $this->hasMany(Tad::className(), ['schoolYear_id' => 'schoolYear_id']);
+    }
+
+    /**
+     * Gets query for [[Users2programs]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsers2programs()
+    {
+        return $this->hasMany(Users2programs::className(), ['schoolYear_id' => 'schoolYear_id']);
     }
 }

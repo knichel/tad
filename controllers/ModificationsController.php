@@ -9,9 +9,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ModificaitonsController implements the CRUD actions for Modifications model.
+ * ModificationsController implements the CRUD actions for Modifications model.
  */
-class ModificaitonsController extends Controller
+class ModificationsController extends Controller
 {
     /**
      * @inheritDoc
