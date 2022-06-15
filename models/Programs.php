@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $program_id
  * @property string $name
+ * @property string $shortName
  * @property int $location_id
  *
  * @property Locations $location
@@ -31,9 +32,10 @@ class Programs extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'location_id'], 'required'],
+            [['name', 'shortName', 'location_id'], 'required'],
             [['location_id'], 'integer'],
             [['name'], 'string', 'max' => 50],
+            [['shortName'], 'string', 'max' => 15],
             [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Locations::className(), 'targetAttribute' => ['location_id' => 'location_id']],
         ];
     }
@@ -46,6 +48,7 @@ class Programs extends \yii\db\ActiveRecord
         return [
             'program_id' => 'Program ID',
             'name' => 'Name',
+            'shortName' => 'Short Name',
             'location_id' => 'Location ID',
         ];
     }

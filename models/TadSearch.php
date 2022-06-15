@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Programs;
+use app\models\Tad;
 
 /**
- * ProgramsSearch represents the model behind the search form of `app\models\Programs`.
+ * TadSearch represents the model behind the search form of `app\models\Tad`.
  */
-class ProgramsSearch extends Programs
+class TadSearch extends Tad
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class ProgramsSearch extends Programs
     public function rules()
     {
         return [
-            [['program_id', 'location_id'], 'integer'],
-            [['name', 'shortName'], 'safe'],
+            [['tad_id', 'schoolYear_id', 'program_id', 'student_id', 'teacher_id', 'written_id', 'practical_id'], 'integer'],
+            [['written_score', 'practical_score', 'portfolio_score'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ProgramsSearch extends Programs
      */
     public function search($params)
     {
-        $query = Programs::find();
+        $query = Tad::find();
 
         // add conditions that should always apply here
 
@@ -58,12 +58,18 @@ class ProgramsSearch extends Programs
 
         // grid filtering conditions
         $query->andFilterWhere([
+            'tad_id' => $this->tad_id,
+            'schoolYear_id' => $this->schoolYear_id,
             'program_id' => $this->program_id,
-            'location_id' => $this->location_id,
+            'student_id' => $this->student_id,
+            'teacher_id' => $this->teacher_id,
+            'written_id' => $this->written_id,
+            'practical_id' => $this->practical_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'shortName', $this->shortName]);
+        $query->andFilterWhere(['like', 'written_score', $this->written_score])
+            ->andFilterWhere(['like', 'practical_score', $this->practical_score])
+            ->andFilterWhere(['like', 'portfolio_score', $this->portfolio_score]);
 
         return $dataProvider;
     }
