@@ -45,7 +45,7 @@ AppAsset::register($this);
             ['label' => 'Vendors', 'url' => ['/vendors/index']],
             ['label' => 'Assessments', 'url' => ['/assessments/index']],
             ['label' => 'Modifications', 'url' => ['/modifications/index']],
-            ['label' => 'School Years', 'url' => ['/schoolyears/index']],
+            ['label' => 'School Years', 'url' => ['/school-years/index']],
             ['label' => 'User -> Program', 'url' => ['/users2programs/index']],
             ['label' => 'Data', 'url' => ['/tad/index']],
             Yii::$app->user->isGuest ? (
