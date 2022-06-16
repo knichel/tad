@@ -18,7 +18,7 @@ class ModificationsSearch extends Modifications
     {
         return [
             [['modification_id'], 'integer'],
-            [['name', 'shortCode'], 'safe'],
+            [['description', 'code'], 'safe'],
         ];
     }
 
@@ -61,8 +61,8 @@ class ModificationsSearch extends Modifications
             'modification_id' => $this->modification_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'shortCode', $this->shortCode]);
+        $query->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'code', $this->code]);
 
         return $dataProvider;
     }

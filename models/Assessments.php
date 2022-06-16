@@ -8,8 +8,9 @@ use Yii;
  * This is the model class for table "assessments".
  *
  * @property int $assessment_id
- * @property int $name
+ * @property string $name
  * @property int $vendor_id
+ * @property string $type
  *
  * @property Vendors $vendor
  */
@@ -29,8 +30,10 @@ class Assessments extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'vendor_id'], 'required'],
-            [['name', 'vendor_id'], 'integer'],
+            [['name', 'vendor_id', 'type'], 'required'],
+            [['vendor_id'], 'integer'],
+            [['type'], 'string'],
+            [['name'], 'string', 'max' => 30],
             [['vendor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vendors::className(), 'targetAttribute' => ['vendor_id' => 'vendor_id']],
         ];
     }
@@ -44,6 +47,7 @@ class Assessments extends \yii\db\ActiveRecord
             'assessment_id' => 'Assessment ID',
             'name' => 'Name',
             'vendor_id' => 'Vendor ID',
+            'type' => 'Type',
         ];
     }
 

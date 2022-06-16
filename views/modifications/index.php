@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'modification_id',
-            'name',
-            'shortCode',
+            'description',
+            'code',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Modifications $model, $key, $index, $column) {

@@ -17,7 +17,8 @@ class AssessmentsSearch extends Assessments
     public function rules()
     {
         return [
-            [['assessment_id', 'name', 'vendor_id'], 'integer'],
+            [['assessment_id', 'vendor_id'], 'integer'],
+            [['name', 'type'], 'safe'],
         ];
     }
 
@@ -58,9 +59,11 @@ class AssessmentsSearch extends Assessments
         // grid filtering conditions
         $query->andFilterWhere([
             'assessment_id' => $this->assessment_id,
-            'name' => $this->name,
             'vendor_id' => $this->vendor_id,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'type', $this->type]);
 
         return $dataProvider;
     }

@@ -8,8 +8,8 @@ use Yii;
  * This is the model class for table "modifications".
  *
  * @property int $modification_id
- * @property string $name
- * @property string|null $shortCode
+ * @property string $description
+ * @property string|null $code
  */
 class Modifications extends \yii\db\ActiveRecord
 {
@@ -27,9 +27,9 @@ class Modifications extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 100],
-            [['shortCode'], 'string', 'max' => 15],
+            [['description'], 'required'],
+            [['description'], 'string', 'max' => 100],
+            [['code'], 'string', 'max' => 15],
         ];
     }
 
@@ -40,8 +40,8 @@ class Modifications extends \yii\db\ActiveRecord
     {
         return [
             'modification_id' => 'Modification ID',
-            'name' => 'Name',
-            'shortCode' => 'Short Code',
+            'description' => 'Description',
+            'code' => 'Code',
         ];
     }
 }
