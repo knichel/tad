@@ -2,5 +2,15 @@
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^tad\.knichel\.org$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.tad\.knichel\.org$
-RewriteRule ^/?$ "https\:\/\/www\.knichel\.org\/techassessdata\/web" [R=301,L]
+
+# If a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Otherwise forward it to index.php
+# used in normal instance RewriteRule . index.php
+
+# what is here due to shared hosting RewriteRule ^/?$ "https\:\/\/www\.knichel\.org\/techassessdata\/web" [R=301,L]
+# attempt by me to use prettyURL
+#  NOT WOKING RewriteRule ^/?$ "https\:\/\/www\.knichel\.org\/techassessdata\/web\/index.php" [R=301,L]
+RewriteRule . index.php
 
