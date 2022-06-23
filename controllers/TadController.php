@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\models\Programs;
+use app\models\SchoolYears;
+
 /**
  * TadController implements the CRUD actions for Tad model.
  */
